@@ -42,8 +42,7 @@ with st.expander("🔍 Show Raw Data"):
 
 import joblib
 
-# Load saved model and vectorizer
-model = joblib.load("sentiment_model.pkl")           # Your best_lr or clf
+model = joblib.load("sentiment_model.pkl")           
 vectorizer = joblib.load("tfidf_vectorizer.pkl")
 label_encoder = joblib.load("label_encoder.pkl")
 
@@ -53,7 +52,6 @@ user_input = st.text_area("Enter your review text below:")
 
 if st.button("Predict Sentiment"):
     if user_input.strip() != "":
-        # Preprocess input (optional: you can use your prep function if needed)
         clean_input = user_input.lower()
         vectorized = vectorizer.transform([clean_input])
         pred = model.predict(vectorized)
